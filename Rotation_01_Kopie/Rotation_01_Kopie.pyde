@@ -1,6 +1,6 @@
 #Definition Grösse Ausgabefenster 
-w=1000
-h=1000
+w=1200
+h=1200
 
 #Definition Mittelpunkt
 xcenter=w/2
@@ -9,13 +9,13 @@ ycenter=h/2
 
 ##Abstände Sonne bis Planeten
 ##Sonne-Merkur: 58 Millionen km
-##Umlaufzeit: 88 d
+rotdaymerkur=88.0
 ##Sonne-Venus: 108 Millionen km
-##Umlaufzeit: 225 d
+rotdayvenus=225.0
 ##Sonne-Erde: 147 Millionen km
-##Umlaufzeit: 365 d
+rotdayerde=365.0
 ##Sonne-Mars: 228 Millionen km
-##Umlaufzeit: 687 d
+rotdaymars=687.0
 
 ##Sonne-Jupiter: 778 Millionen km
 ##Umlaufzeit: 12 y
@@ -35,21 +35,21 @@ d0=2*r0
 
 #Merkur
 r1=0.9*h/2/228*58
-rotmerkur=0
+rotmerkur=0.0
 
 #Venus
 r2=0.9*h/2/228*108
-rotvenus=0
+rotvenus=0.0
 
 #Erde
 r3=0.9*h/2/228*147
-roterde=0
+roterde=0.0
 #Mond
-rotmond=0
+rotmond=0.0
 
 #Mars
 r4=0.9*h/2/228*228
-rotmars=0
+rotmars=0.0
 
 
 def setup():
@@ -60,20 +60,27 @@ def setup():
 
 def draw():
     
+    #print(frameRate)
+    
     global rotmerkur
+    global rotdaymerkur
     global rotvenus
+    global rotdayvenus
     global roterde
+    global rotdayerde
     global rotmond
+    global rotdaymond
     global rotmars
+    global rotdaymars
     
     background(0,0,0)
     
     #Sternenhimmel
-    for i in range(5):
+    for i in range(4):
         xstar=random(0,w)
         ystar=random(0,h)
         fill(255,255,255)
-        ellipse(xstar,ystar,5,5)
+        ellipse(xstar,ystar,4,4)
     
     #Sonne
     fill(255,255,0)
@@ -81,42 +88,48 @@ def draw():
     
     pushMatrix()
     translate(xcenter,ycenter)
-    
     #Merkur
-    fill(255,0,0)
+    fill(150,150,150)
     rotate(radians(rotmerkur))
     circle(r1*cos(radians(0)),r2*sin(radians(0)),10)
-
+    popMatrix()
+    
+    pushMatrix()
+    translate(xcenter,ycenter)
     #Venus
-    fill(0,255,0)
+    fill(137,207,240)
     rotate(radians(rotvenus))
     circle(r2*cos(radians(0)),r2*sin(radians(0)),20)
+    popMatrix()
 
+    pushMatrix()
+    translate(xcenter,ycenter)
     #Erde und Mond
     fill(0,0,255)
     rotate(radians(roterde))
     circle(r3*cos(radians(0)),r3*sin(radians(0)),25)
-    
-    pushMatrix()
     translate(r3*cos(radians(0)),r3*sin(radians(0)))
     rotate(radians(rotmond))
-    fill(255)
+    fill(150,150,150)
     circle(25,r3*sin(radians(0)),10)
     popMatrix()
 
+    pushMatrix()
+    translate(xcenter,ycenter)
     #Mars
-    fill(0,0,150)
+    fill(250,0,0)
     rotate(radians(rotmars))
     circle(r4*cos(radians(0)),r4*sin(radians(0)),20)
-
-    
     popMatrix()
     
-    rotmerkur+=1
-    rotvenus+=2
-    roterde+=1
-    rotmond+=2
-    rotmars-=1
+    rotmerkur+=rotdaymerkur/rotdayerde
+    rotvenus+=rotdayvenus/rotdayerde
+    roterde+=rotdayerde/rotdayerde
+    rotmond+=1.5
+    rotmars+=rotdaymars/rotdayerde
+    
+
+
     
 
     
