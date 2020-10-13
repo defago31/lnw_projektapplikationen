@@ -6,6 +6,8 @@
 ##Breite und Höhe des Bildschirms
 #w=displayWidth
 #h=displayHeight
+w=1200
+h=1200
 
 
 
@@ -146,13 +148,13 @@ def draw():
         #line(pmouseX,pmouseY,mouseX,mouseY)
     
     ##Feld soll leuchten, wenn drauf geklickt wird...
-    #x=200
-    #y=200
-    #rect(x,y,200,50)
-    #if mouseX>=x and mouseX<=x+200 and mouseY>=y and mouseY<=y+50 and mousePressed==True:
-        #fill(255,0,0)
-    #else:
-        #fill(60,60,60)
+    p1=50
+    p2=50
+    rect(p1,p2,200,50)
+    if mouseX>=p1 and mouseX<=p1+200 and mouseY>=p2 and mouseY<=p2+50 and mousePressed==True:
+        fill(255,0,0)
+    else:
+        fill(60,60,60)
     
     ##Ereignisfunktion bei Mausklick...
     #text("Maustaste klicken",10,30)
