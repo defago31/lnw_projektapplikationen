@@ -113,9 +113,9 @@ def draw():
     
     
     #Infotafeln auf Umlaufbahn
-
     rectMode(CORNER)
     fill(80)
+      
     
     #Quadrat Farbwechsel auf Umlaufbahn Merkur
     rect(xcenter+r1-5,ycenter-5,10,10)
@@ -129,6 +129,8 @@ def draw():
     else:
         fill(80)
         rect(xcenter+r1-5,ycenter-5,10,10)
+        textSize(20)
+        text("Infos? Klicke und halte die Maus auf dem Rechteck.",w/4,200)
         #print("no")
     
     #Quadrat Farbwechsel auf Umlaufbahn Venus    
@@ -138,11 +140,13 @@ def draw():
         rect(xcenter+r2-10,ycenter-10,20,20)
         fill(255)
         textSize(40)
-        text("Venus, nächster Nachbar der Erde",50,100)
+        text("Venus, naechster Nachbar der Erde",50,100)
         #print("yes")
     else:
         fill(80)
         rect(xcenter+r2-10,ycenter-10,20,20)
+        textSize(20)
+        text("Infos? Klicke und halte die Maus auf dem Rechteck.",w/4,200)
         #print("no")
 
     #Quadrat Farbwechsel auf Umlaufbahn Erde
@@ -157,6 +161,8 @@ def draw():
     else:
         fill(80)
         rect(xcenter+r3-15,ycenter-15,30,30)
+        textSize(20)
+        text("Infos? Klicke und halte die Maus auf dem Rechteck.",w/4,200)
         #print("no")
     
     #Quadrat Farbwechsel auf Umlaufbahn Mars
@@ -171,6 +177,8 @@ def draw():
     else:
         fill(80)
         rect(xcenter+r4-20,ycenter-20,40,40)
+        textSize(20)
+        text("Infos? Klicke und halte die Maus auf dem Rechteck.",w/4,200)
         #print("no")
 
     
