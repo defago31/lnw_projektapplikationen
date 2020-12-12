@@ -1,13 +1,13 @@
-#Definition Grösse Ausgabefenster 
+#Definition Grösse Ausgabefenster, manuell anpassbar (leider funktioniert displayWidth etc. nicht, Fehlermeldung)
 w=1200
 h=1200
 
-#Definition Mittelpunkt
+#Definition Mittelpunkt (in Mitte von Breite und Höhe)
 xcenter=w/2
 ycenter=h/2
 
 ##Abstände Sonne bis Planeten
-##Rotation um die Sonne der verschiedenen Planeten
+##Rotation um die Sonne der verschiedenen Planeten; Anzahl Tage
 
 #Merkur
 distancesonnemerkur=58.0
@@ -28,7 +28,7 @@ rotdaymond=4000.0
 distancesonnemars=228.0
 rotdaymars=687.0
 
-
+##Folgende Planeten sind leider nicht möglich abzubilden und Einhaltung der Verhältnisse
 ##Sonne-Jupiter: 778 Millionen km
 ##Umlaufzeit: 12 y
 ##Sonne-Saturn: 1430 Millionen km
@@ -42,6 +42,8 @@ rotdaymars=687.0
 #Sonne
 r0=40
 d0=2*r0
+
+##Planeten werden mathematisch definiert... Rotation wird auf 0 gesetzt
 
 #Merkur
 r1=0.6*h/2/distancesonneerde*distancesonnemerkur
@@ -61,13 +63,11 @@ rotmond=0.0
 r4=0.6*h/2/distancesonneerde*distancesonnemars
 rotmars=0.0
 
-
 def setup():
     
     size(w,h)
     frameRate(60)
     
-
 def draw():
     
     print(frameRate)
@@ -86,18 +86,7 @@ def draw():
     global xcenter
     global ycenter
     
-    
     background(0,0,0)
-    
-
-    
-    #Sternenhimmel
-    for i in range(4):
-        xstar=random(0,w)
-        ystar=random(0,h)
-        fill(255,255,255)
-        circle(xstar,ystar,4)
-    
 
     #Umlaufbahnen
     pushMatrix()
@@ -111,12 +100,10 @@ def draw():
     popMatrix()
     
     
-    
     #Infotafeln auf Umlaufbahn
     rectMode(CORNER)
     fill(80)
       
-    
     #Quadrat Farbwechsel auf Umlaufbahn Merkur
     rect(xcenter+r1-5,ycenter-5,10,10)
     if mouseX>=xcenter+r1-5 and mouseX<=xcenter+r1-5+10 and mouseY>=ycenter-5 and mouseY<=ycenter-5+10 and mousePressed==True:
@@ -181,7 +168,6 @@ def draw():
         text("Infos? Klicke und halte die Maus auf dem Rechteck.",w/4,200)
         #print("no")
 
-    
     #Sonne
     fill(255,255,0)
     circle(w/2,h/2,d0)
@@ -229,13 +215,12 @@ def draw():
     rotmond+=rotdaymond/rotdayerde
     rotmars+=rotdaymars/rotdayerde
     
-
-
-
-
-    
-
-    
+    #Sternenhimmel: 
+    for i in range(3):
+        xstar=random(0,w)
+        ystar=random(0,h)
+        fill(255,255,255)
+        circle(xstar,ystar,4)
     
 
     
